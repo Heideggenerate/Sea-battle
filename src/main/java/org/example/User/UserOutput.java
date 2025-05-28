@@ -1,0 +1,48 @@
+package org.example.User;
+
+public class UserOutput {
+    public static void menu() {System.out.println("====Выберите режим игры====\n1.Классика\n2.Туман войны\n3.Салво");}
+
+    //TODO: переставить варианты местами
+    public static void menuTypeGame() {System.out.println("====Выберите тип расположения кораблей====\n1.Частично ручное\n2.Автоматическое\n3.Полностью ручное");}
+
+    public static void shipsCoordinates() {System.out.println("====Введите координаты====");}
+
+    public static void shipXY(int coorType) {
+        switch (coorType) {
+            case 1: System.out.println("\n\t\tX\n"); break;
+            case 0: System.out.println("\t\tY\n"); break;
+        }
+    }
+
+    public static void shipsType(int n) {
+        switch (n) {
+            case 0:
+                System.out.println("\n====Выберите тип корабля===="); break;
+            case 1:
+                System.out.println("\n1.Однопалубный\n2.Двухпалубный\n3.Трёхпалубный\n4.Четырёхпалубный"); break;
+            case 2:
+                System.out.println("1.Однопалубный"); break;
+            case 3:
+                System.out.println("2.Двухпалубный"); break;
+            case 4:
+                System.out.println("3.Трёхпалубный"); break;
+            case 5:
+                System.out.println("4.Четырёхпалубный"); break;
+        }
+    }
+
+    public static void field() {}
+
+    public static void playerReady() {
+        System.out.println("\nГотовы?\n");
+    }
+
+    public static void coordinatesError() {
+        System.out.println("\n\n\nНеверные координаты!\n\n\n");
+    }
+
+    public static void typeError() {
+        System.out.println("\n\n\nНеверный выбор корабля!\n\n\n");
+    }
+}
