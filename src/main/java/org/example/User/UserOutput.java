@@ -4,7 +4,7 @@ public class UserOutput {
     public static void menu() {System.out.println("====Выберите режим игры====\n1.Классика\n2.Туман войны\n3.Салво");}
 
     //TODO: переставить варианты местами
-    public static void menuTypeGame() {System.out.println("====Выберите тип расположения кораблей====\n1.Частично ручное\n2.Автоматическое\n3.Полностью ручное");}
+    public static void menuTypeGame() {System.out.println("====Выберите тип расположения кораблей====\n1.Полностью ручное\n2.Частично ручное\n3.Автоматическое\n");}
 
     public static void shipsCoordinates() {System.out.println("\n====Введите координаты====");}
 
@@ -67,5 +67,13 @@ public class UserOutput {
             case 1: System.out.println('2'); break;
         }
         System.out.println("\n\n");
+    }
+
+    public static void sleeperEnters(boolean is) {
+        int k = 0;
+        if (is) k = 2000;
+        try {Thread.sleep(6000 - k);} catch (Exception ex) {}
+        enters();
+        try {Thread.sleep(2500 - k);} catch (Exception ex) {}
     }
 }

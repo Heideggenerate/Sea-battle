@@ -8,6 +8,7 @@ public class LengthCounter {
         this.storage = storage;
     }
 
+    //Расчёт потенциальной длины во всех направлениях для установки корабля
     public void isCanPlace(boolean[][] data) {
         int[][] shipsHeads = storage.shipHeadGetter();
 

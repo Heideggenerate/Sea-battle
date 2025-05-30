@@ -1,10 +1,9 @@
 package org.example;
-import org.example.Logic.GameLogic;
-import org.example.User.*;
+import org.example.Logic.GameType;
 
 public class Main {
     public static void main(String[] args) {
-        GameLogic logic = new GameLogic();
-        logic.fieldDataGetter();
+        GameType logic = new GameType();
+        logic.gameType();
     }
 }

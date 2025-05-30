@@ -7,39 +7,12 @@ import java.util.Arrays;
 public class FieldGenerator {
 
     private int[][] tempField = new int[4][2];
-    private UserInput input = new UserInput();
-    private UserOutput output = new UserOutput();
     private Storage data = new Storage();
 
     public void dataChange(Storage storage) {
         data = storage;
     }
     //TODO: сделать вывод универсальнее
-    public void generator(boolean[][][] field, boolean queue) {
-
-        boolean[][][] filedData = field;
-        int count = 0;
-        for (boolean[][] firstArray : filedData) {
-            if (queue && count == 0) {
-                count++;
-                continue;
-            }
-            for (boolean[] secondArray : firstArray) {
-                for (boolean thirdArray : secondArray) {
-                    if (thirdArray) {
-                        System.out.print('■');
-                    }
-                    else {
-                        System.out.print('□');
-                    }
-                }
-                System.out.println();
-            }
-            System.out.println();
-            if (!queue) break;
-        }
-        System.out.println("\n\n\n");
-    }
 
     public void arrayClear() {
         for (int[] arr : tempField) {
@@ -70,7 +43,7 @@ public class FieldGenerator {
         if (add) {
             for (int i = 0; i < tempField.length; i++) {
                 for (int j = 0; j < tempField[i].length; j++) {
-                    if (tempField[i][j] != -1) data.shipOnTableGive(tempField[i][1], tempField[i][0]);
+                    if (tempField[i][j] != -1) data.tableGive(tempField[i][1], tempField[i][0]);
                 }
             }
         }

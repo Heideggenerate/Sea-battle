@@ -6,17 +6,23 @@ import org.example.User.UserOutput;
 
 public class ShipDestroy {
     private Storage storage = new Storage();
-    private UserInput input = new UserInput();
-    private UserOutput output = new UserOutput();
-    private Checker checker = new Checker();
-    private FieldGenerator field = new FieldGenerator();
+    private final UserInput input = new UserInput();
+    private final Checker checker = new Checker();
+    private final FieldGenerator field = new FieldGenerator();
 
     private int[][] fieldAttack = new int[9][9];
 
+    //Смена данных
     public void storageChange(Storage storage) {
         this.storage = storage;
     }
 
+    /**
+     *
+     * @param fieldAttackCoordinates Координаты атаки
+     * @return Возврат координат атаки
+     */
+    //Выбор координат атаки
     public int[][] coordinatesAttack(int[][] fieldAttackCoordinates) {
         fieldAttack = fieldAttackCoordinates;
         field.attackField(fieldAttack, storage);
@@ -26,6 +32,7 @@ public class ShipDestroy {
             else if (storage.tableGetter()[coordinate[0]][coordinate[1]]) {
                 fieldAttack[coordinate[0]][coordinate[1]] = 2;
                 storage.destroyedShipsIncrement();
+                i++;
             }
             else if (!storage.tableGetter()[coordinate[0]][coordinate[1]]) fieldAttack[coordinate[0]][coordinate[1]] = 1;
             field.attackField(fieldAttack, storage);

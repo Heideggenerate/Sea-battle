@@ -2,27 +2,32 @@ package org.example.Ships;
 
 public class PlayerSecond {
 
-    private Storage playerSecond = new Storage();
-    private HeadRandom parameterPassing = new HeadRandom();
-    private HeadChoose parameterPassingManualAuto = new HeadChoose();
-    private BuildManual parameterPassingManual = new BuildManual();
+    private final Storage playerSecond = new Storage();
+    private final HeadRandom parameterPassing = new HeadRandom();
+    private final HeadChoose parameterPassingManualAuto = new HeadChoose();
+    private final BuildManual parameterPassingManual = new BuildManual();
 
-    /**Передача ссылки второго игрока*/
+    //Автоматическая генерация
     public Storage passingSecond() {
         parameterPassing.playerData(playerSecond);
         return parameterPassing.fourShips();
     }
-
+    //Полу-автомат
     public Storage passingSecondManualAuto() {
         parameterPassingManualAuto.dataChange(playerSecond);
         return parameterPassingManualAuto.headPlacer();
     }
-
+    //Ручная расстановка
     public Storage passingSecondManual() {
         parameterPassingManual.storageChange(playerSecond);
         return parameterPassingManual.partGenerate();
     }
 
+    /**
+     *
+     * @return Возврат данных игрока
+     */
+    //Получение данных игрока
     public Storage getPlayerSecond() {
         return playerSecond;
     }

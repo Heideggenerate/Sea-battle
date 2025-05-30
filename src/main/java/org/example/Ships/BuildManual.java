@@ -11,7 +11,6 @@ public class BuildManual {
     UserInput input = new UserInput();
     FieldGenerator field = new FieldGenerator();
     Checker checker = new Checker();
-    ShipDestroy destroy = new ShipDestroy();
 
     private boolean[] usedShips = new boolean[4];
     private int[] lastCoordinates = new int[2];
@@ -20,6 +19,11 @@ public class BuildManual {
         this.storage = storage;
     }
 
+    /**
+     *
+     * @return Возврат заполненного поля, координат
+     */
+    //Генерация частей корабля
     public Storage partGenerate() {
         tempStorageClear();
         field.arrayClear();
@@ -31,9 +35,15 @@ public class BuildManual {
             if (i != 3) output.shipsType(0);
             for (int j = 0; j < usedShips.length; j++) if (!usedShips[j]) output.shipsType(j + 2);
         }
+        field.dataChange(storage);
+        field.tempFieldPrint();
         return storage;
     }
 
+    /**
+     * @return Возврат состояния установки корабля
+     */
+    //Выбор размерности корабля
     public boolean partPlacer() {
         int in = input.input();
         for (int i = 0; i < usedShips.length; i++) if ((usedShips[i] && in == i + 1) || (in < 1 || in > 4)) {
@@ -50,6 +60,7 @@ public class BuildManual {
         return true;
     }
 
+    //Корабль размера 1
     public void onePart() {
         boolean isPlaced = true;
         do {
@@ -63,6 +74,7 @@ public class BuildManual {
         tempStorageClear();
     }
 
+    //Корабль размера 2
     public void twoParts() {
         boolean isPlaced = true;
         do {
@@ -79,6 +91,7 @@ public class BuildManual {
         tempStorageClear();
     }
 
+    //Корабль размера 3
     public void threeParts() {
         boolean isPlaced = true;
         do {
@@ -95,6 +108,7 @@ public class BuildManual {
         tempStorageClear();
     }
 
+    //Корабль размера 4
     public void fourParts() {
         boolean isPlaced = true;
        do {
@@ -111,6 +125,13 @@ public class BuildManual {
        tempStorageClear();
     }
 
+    /**
+     *
+     * @param number Длина корабля
+     * @param count Номер части корабля
+     * @return Возврат состояния установки корабля
+     */
+    //Функция генерации частей корабля, их отправка в хранилище, валидация
     public boolean partGenerateFunction(int number, int count) {
         int[] coordinates = new int[2];
         int[][] fakeArr = new int[0][0];
@@ -146,6 +167,14 @@ public class BuildManual {
         return isPlaced;
     }
 
+    /**
+     *
+     * @param size Размер корабля
+     * @param x Координата х
+     * @param y Координата У
+     * @return Возврат состояния установки корабля
+     */
+    //Достраивание кораблей, валидация данных
     public boolean shipCompleter(int size, int x, int y) {
         boolean xLeft = directionCalculate(storage.shipHeadGetter()[size][1], storage.shipHeadGetter()[size][0], x, y)[1];
         boolean xRight = directionCalculate(storage.shipHeadGetter()[size][1], storage.shipHeadGetter()[size][0], x, y)[2];
@@ -187,6 +216,14 @@ public class BuildManual {
         return true;    
     }
 
+    /**
+     *
+     * @param headX Голова корабля по Х
+     * @param headY Голова корабля по Н
+     * @param x Координаты части по Х
+     * @param y Координаты части по У
+     * @return Возврат состояния установки корабля
+     */
     public boolean[] directionCalculate(int headX, int headY, int x, int y) {
         boolean[] direction = new boolean[3];
         if (headX > x) direction[1] = true;
@@ -195,6 +232,7 @@ public class BuildManual {
         return direction;
     }
 
+    //Очистка временного хранилища
     public void tempStorageClear () {
         for (int i = 0; i < tempStorage.length; i++) {
             Arrays.fill(tempStorage[i], -1);

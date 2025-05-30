@@ -3,23 +3,25 @@ package org.example.Ships;
 import java.util.Arrays;
 
 public class BuildAuto {
-    private Storage data = new Storage();
-    private Checker checker = new Checker();
+    private Storage storage = new Storage();
+    private final Checker checker = new Checker();
 
-    private int[][] sizerGet = data.shipsSizeGetter();
-    private int[][] headsGet = data.shipHeadGetter();
+    private int[][] sizerGet = storage.shipsSizeGetter();
+    private int[][] headsGet = storage.shipHeadGetter();
 
     boolean check = true;
     private int randomIndex = 0;
     private int[][] coordinatesArray = new int[4][2];
     private boolean[] availableDirections = new boolean[4];
 
+    //Замена данных
     public void dataChange(Storage data) {
-        this.data = data;
+        this.storage = data;
         this.sizerGet = data.shipsSizeGetter();
         this.headsGet = data.shipHeadGetter();
     }
 
+    //Стартовая точка вычисления размера корабля
     public boolean shipSize() {
         for (int i = 1; i < headsGet.length; i++) {
             if (!shipBuilder(i)){
@@ -29,6 +31,7 @@ public class BuildAuto {
         return true;
     }
 
+    //Постройка корабля
     public boolean shipBuilder(int size) {
         check = true;
         boolean isPlaced = false;
@@ -44,12 +47,13 @@ public class BuildAuto {
         }
       int count = 0;
         for (int[] arr : coordinatesArray) {
-            if(arr[0] != -1 && arr[1] != -1) data.shipOnTableGive(arr[1], arr[0]);
+            if(arr[0] != -1 && arr[1] != -1) storage.tableGive(arr[1], arr[0]);
             count++;
         }
         return true;
     }
 
+    //Проверка возможности размещения
     public boolean coordinateCheck (int size) {
         int shift = directionCoordinatesCorrect(size);
         //TODO:Вынести в отдельную функцию
@@ -63,7 +67,7 @@ public class BuildAuto {
         int count = 0;
         if (isY) {
             if (shift < 0) for (int i = headsGet[size][0]; i <= headsGet[size][0] - shift; i++) {
-                if (!checker.mergedCheck(headsGet[size][1], i, data, headsGet[size][1], headsGet[size][0], false)) return false;
+                if (!checker.mergedCheck(headsGet[size][1], i, storage, headsGet[size][1], headsGet[size][0], false)) return false;
                 else {
                     arr[count][0] = i;
                     arr[count][1] = headsGet[size][1];
@@ -71,7 +75,7 @@ public class BuildAuto {
                 }
             }
             else for (int i = headsGet[size][0] - shift; i < headsGet[size][0]; i++) {
-                if (!checker.mergedCheck(headsGet[size][1], i, data, headsGet[size][1], headsGet[size][0], false)) return false;
+                if (!checker.mergedCheck(headsGet[size][1], i, storage, headsGet[size][1], headsGet[size][0], false)) return false;
                 else {
                     arr[count][0] = i;
                     arr[count][1] = headsGet[size][1];
@@ -81,7 +85,7 @@ public class BuildAuto {
         }
         else {
             if (shift < 0) for (int i = headsGet[size][1] + shift; i < headsGet[size][1]; i++) {
-                if (!checker.mergedCheck(i, headsGet[size][0], data, headsGet[size][1], headsGet[size][0], false)) return false;
+                if (!checker.mergedCheck(i, headsGet[size][0], storage, headsGet[size][1], headsGet[size][0], false)) return false;
                 else {
                     arr[count][0] = headsGet[size][0];
                     arr[count][1] = i;
@@ -89,7 +93,7 @@ public class BuildAuto {
                 }
             }
             else for (int i = headsGet[size][1]; i <= shift + headsGet[size][1]; i++) {
-                if (!checker.mergedCheck(i, headsGet[size][0], data, headsGet[size][1], headsGet[size][0], false)) return false;
+                if (!checker.mergedCheck(i, headsGet[size][0], storage, headsGet[size][1], headsGet[size][0], false)) return false;
                 else {
                     arr[count][0] = headsGet[size][0];
                     arr[count][1] = i;
@@ -101,7 +105,7 @@ public class BuildAuto {
         return true;
     }
 
-
+    //Подгон расчётных координат под размеры корабля
     public int directionCoordinatesCorrect(int size) {
         //TODO:Вынести в отдельную функцию
         boolean isY = false;
@@ -120,6 +124,7 @@ public class BuildAuto {
         else return end;
     }
 
+    //Подсчёт конечной точки
     public int endCoordinateCalculate(int size) {
         int headY = headsGet[size][0];
         int headX = headsGet[size][1];
@@ -138,6 +143,7 @@ public class BuildAuto {
         return -404;
     }
 
+    //Рандомный выбор направления построения
     public int randomDirection(int size) {
         int count = 0;
         int total = 0;
@@ -165,6 +171,7 @@ public class BuildAuto {
         return -1;
     }
 
+    //Просмотр доступных направлений для постройки
     public boolean[] directionAvailable(int size) {
         for (int i = 0; i < availableDirections.length; i++) availableDirections[i] = false;
         for (int i = 0; i < sizerGet[size].length; i++) {

@@ -1,41 +1,52 @@
 package org.example.Ships;
 
+import org.example.User.FieldGenerator;
+
 public class HeadRandom {
 
-    private Storage data = new Storage();
-    private LengthCounter shipLength = new LengthCounter();
-    private Checker checker = new Checker();
-    private BuildAuto shipBuilder = new BuildAuto();
+    private Storage storage = new Storage();
+    private final LengthCounter shipLength = new LengthCounter();
+    private final Checker checker = new Checker();
+    private final BuildAuto shipBuilder = new BuildAuto();
+    private final FieldGenerator field = new FieldGenerator();
 
+    //Смена данных
     public void playerData(Storage playerInfo) {
-        data = playerInfo;
+        storage = playerInfo;
     }
 
+    //Генерация всех кораблей
     public Storage fourShips() {
         boolean isPlaced = false;
         while (!isPlaced) {
-            data.fieldClean(data);
+            storage.fieldClean(storage);
             for (int i = 0; i < 4; i++) {
-                coordinatesGenerator(false, i);
+                coordinatesGenerator(false);
             }
-            shipLength.storageChange(data);
-            shipLength.isCanPlace(data.tableGetter());
-            shipBuilder.dataChange(data);
+            shipLength.storageChange(storage);
+            shipLength.isCanPlace(storage.tableGetter());
+            shipBuilder.dataChange(storage);
             isPlaced = shipBuilder.shipSize();
         }
-        return data;
+        field.dataChange(storage);
+        field.tempFieldPrint();
+        return storage;
     }
 
-    public void coordinatesGenerator(boolean isPlaced, int k) {
-
-        int x = (int) (Math.random() * data.XSIZE);
-        int y = (int) (Math.random() * data.YSIZE);
+    /**
+     *
+     * @param isPlaced Поставлен ли корабль
+     */
+    //Рандомная генерация головы корабля
+    public void coordinatesGenerator(boolean isPlaced) {
+        int x = (int) (Math.random() * storage.XSIZE);
+        int y = (int) (Math.random() * storage.YSIZE);
         while (!isPlaced) {
-            x = (int) (Math.random() * data.XSIZE);
-            y = (int) (Math.random() * data.YSIZE);
-            isPlaced = checker.coordinatesCheck(x, y, data, x, y, true);
+            x = (int) (Math.random() * storage.XSIZE);
+            y = (int) (Math.random() * storage.YSIZE);
+            isPlaced = checker.coordinatesCheck(x, y, storage, x, y, true);
         }
-        data.shipOnTableGive(x, y);
+        storage.tableGive(x, y);
     }
 
 }

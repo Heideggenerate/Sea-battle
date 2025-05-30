@@ -45,14 +45,14 @@ class HeadRandomTest {
         table[8][8] = true;
         Mockito.when(storageMock.tableGetter()).thenReturn(table);
         generatorSpy.coordinatesGenerator(false, 0);
-        verify(storageMock).shipOnTableGive(anyInt(), anyInt());
+        verify(storageMock).tableGive(anyInt(), anyInt());
     }
 
     @Test
     void testCoordinatesGenerator_correctnessRandom_verify() {
         for (int i = 0; i < 50; i++) {
             generatorSpy.coordinatesGenerator(false, 0);
-            verify(storageMock).shipOnTableGive(intThat(x -> x >= 0 && x < 9), intThat(y -> y >= 0 && y < 9));
+            verify(storageMock).tableGive(intThat(x -> x >= 0 && x < 9), intThat(y -> y >= 0 && y < 9));
             clearInvocations(storageMock);
         }
     }
