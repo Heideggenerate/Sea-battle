@@ -5,15 +5,15 @@ import org.example.User.UserInput;
 import org.example.User.UserOutput;
 
 public class ShipDestroy {
-    private StorageShips storage = new StorageShips();
+    private Storage storage = new Storage();
     private UserInput input = new UserInput();
     private UserOutput output = new UserOutput();
-    private ShipPlaceCheck checker = new ShipPlaceCheck();
+    private Checker checker = new Checker();
     private FieldGenerator field = new FieldGenerator();
 
     private int[][] fieldAttack = new int[9][9];
 
-    public void storageChange(StorageShips storage) {
+    public void storageChange(Storage storage) {
         this.storage = storage;
     }
 

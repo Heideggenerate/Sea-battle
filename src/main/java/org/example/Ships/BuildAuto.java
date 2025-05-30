@@ -2,9 +2,9 @@ package org.example.Ships;
 
 import java.util.Arrays;
 
-public class FullAutomaticlShipBuilder {
-    private StorageShips data = new StorageShips();
-    private ShipPlaceCheck checker = new ShipPlaceCheck();
+public class BuildAuto {
+    private Storage data = new Storage();
+    private Checker checker = new Checker();
 
     private int[][] sizerGet = data.shipsSizeGetter();
     private int[][] headsGet = data.shipHeadGetter();
@@ -14,7 +14,7 @@ public class FullAutomaticlShipBuilder {
     private int[][] coordinatesArray = new int[4][2];
     private boolean[] availableDirections = new boolean[4];
 
-    public void dataChange(StorageShips data) {
+    public void dataChange(Storage data) {
         this.data = data;
         this.sizerGet = data.shipsSizeGetter();
         this.headsGet = data.shipHeadGetter();

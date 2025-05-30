@@ -13,17 +13,17 @@ import org.mockito.Mockito;
 import org.mockito.Mock;
 
 @ExtendWith(MockitoExtension.class)
-class HeadRandomGeneratorTest {
+class HeadRandomTest {
 
     @Mock
-    private StorageShips storageMock;
+    private Storage storageMock;
 
     @Mock
-    private ShipLengthCounter shipLengthMock;
+    private LengthCounter shipLengthMock;
 
     @Spy
     @InjectMocks
-    private HeadRandomGenerator generatorSpy;
+    private HeadRandom generatorSpy;
 
     @Test
     void testFourShips_isCanPlaceCall_verify() {
@@ -63,7 +63,7 @@ class HeadRandomGeneratorTest {
         table[8][8] = true;
 
         Mockito.when(storageMock.tableGetter()).thenReturn(table);
-        ShipPlaceCheck checker = new ShipPlaceCheck();
+        Checker checker = new Checker();
         boolean coordinateCheck = checker.coordinatesCheck(8, 8, storageMock, 8, 8, true);
         Assertions.assertFalse(coordinateCheck);
     }
@@ -74,7 +74,7 @@ class HeadRandomGeneratorTest {
         table[0][0] = false;
         Mockito.when(storageMock.tableGetter()).thenReturn(table);
 
-        ShipPlaceCheck checker = new ShipPlaceCheck();
+        Checker checker = new Checker();
         boolean coordinateCheck = checker.coordinatesCheck(0, 0, storageMock, 0, 0, true);
         Assertions.assertTrue(coordinateCheck);
     }

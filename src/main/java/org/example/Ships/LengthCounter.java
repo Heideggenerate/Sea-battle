@@ -1,10 +1,10 @@
 package org.example.Ships;
 
-public class ShipLengthCounter {
+public class LengthCounter {
 
-    private StorageShips storage = new StorageShips();
+    private Storage storage = new Storage();
 
-    public void storageChange(StorageShips storage) {
+    public void storageChange(Storage storage) {
         this.storage = storage;
     }
 

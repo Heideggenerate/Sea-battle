@@ -10,14 +10,14 @@ public class GameLogic {
 
     private UserInput input = new UserInput();
     private UserOutput output = new UserOutput();
-    private StorageShips data = new StorageShips();
-    private FirstPlayerShips firstPlayer = new FirstPlayerShips();
-    private SecondPlayerShips secondPlayer = new SecondPlayerShips();
-    private FullManualBuilder manualBuilder = new FullManualBuilder();
+    private Storage data = new Storage();
+    private PlayerFirst firstPlayer = new PlayerFirst();
+    private PlayerSecond secondPlayer = new PlayerSecond();
+    private BuildManual manualBuilder = new BuildManual();
     private final FieldGenerator field = new FieldGenerator();
-    private StorageShips[] playerData = new StorageShips[2];
+    private Storage[] playerData = new Storage[2];
     private ShipDestroy destroy = new ShipDestroy();
-    private ShipPlaceCheck checker = new ShipPlaceCheck();
+    private Checker checker = new Checker();
 
     public void fieldDataGetter() {
         boolean[][][] playersInfo = new boolean[2][data.YSIZE][data.XSIZE];

@@ -4,23 +4,23 @@ import org.example.User.*;
 
 import java.util.Arrays;
 
-public class FullManualBuilder {
+public class BuildManual {
 
-    StorageShips storage = new StorageShips();
+    Storage storage = new Storage();
     UserOutput output = new UserOutput();
     UserInput input = new UserInput();
     FieldGenerator field = new FieldGenerator();
-    ShipPlaceCheck checker = new ShipPlaceCheck();
+    Checker checker = new Checker();
     ShipDestroy destroy = new ShipDestroy();
 
     private boolean[] usedShips = new boolean[4];
     private int[] lastCoordinates = new int[2];
     private int[][] tempStorage = new int[4][2];
-    public void storageChange(StorageShips storage) {
+    public void storageChange(Storage storage) {
         this.storage = storage;
     }
 
-    public StorageShips partGenerate() {
+    public Storage partGenerate() {
         tempStorageClear();
         field.arrayClear();
         output.shipsType(0);

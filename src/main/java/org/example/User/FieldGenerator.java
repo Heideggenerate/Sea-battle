@@ -1,20 +1,17 @@
 package org.example.User;
-import org.example.Logic.*;
 
-import org.example.Logic.GameLogic;
 import org.example.Ships.*;
 
 import java.util.Arrays;
-import java.util.Timer;
 
 public class FieldGenerator {
 
     private int[][] tempField = new int[4][2];
     private UserInput input = new UserInput();
     private UserOutput output = new UserOutput();
-    private StorageShips data = new StorageShips();
+    private Storage data = new Storage();
 
-    public void dataChange(StorageShips storage) {
+    public void dataChange(Storage storage) {
         data = storage;
     }
     //TODO: сделать вывод универсальнее
@@ -50,7 +47,7 @@ public class FieldGenerator {
         }
     }
 
-    public void attackField(int[][] coordinates, StorageShips storage) {
+    public void attackField(int[][] coordinates, Storage storage) {
         for (int i = 0; i < storage.YSIZE; i++) {
             for (int j = 0; j < storage.XSIZE; j++) {
                 if (storage.tableGetter()[i][j] == true) {

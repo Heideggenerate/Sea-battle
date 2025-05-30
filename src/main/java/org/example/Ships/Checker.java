@@ -1,15 +1,15 @@
 package org.example.Ships;
 
-public class ShipPlaceCheck {
+public class Checker {
 
-    public boolean coordinatesCheck(int x, int y, StorageShips data, int headX, int headY, boolean isCheckShipOnPlace) {
+    public boolean coordinatesCheck(int x, int y, Storage data, int headX, int headY, boolean isCheckShipOnPlace) {
         if (!fieldNearShip(x, y, data, headX, headY) || !shipOnThisPlace(x, y, data, isCheckShipOnPlace)) {
             return false;
         }
         return true;
     }
 
-    public boolean shipOnThisPlace(int x, int y, StorageShips data, boolean is) {
+    public boolean shipOnThisPlace(int x, int y, Storage data, boolean is) {
         if (is && data.tableGetter()[y][x]) return false;
         return true;
     }
@@ -21,12 +21,12 @@ public class ShipPlaceCheck {
         return true;
     }
 
-    public boolean mergedCheck(int x, int y,StorageShips data, int headX, int headY, boolean isCheckOnShipPlace) {
+    public boolean mergedCheck(int x, int y, Storage data, int headX, int headY, boolean isCheckOnShipPlace) {
         if (!outOfFieldCheck(x, y) || !coordinatesCheck(x, y, data,  headX, headY, isCheckOnShipPlace)) return false;
         return true;
     }
 
-    public boolean fieldNearShip(int xS, int yS, StorageShips data, int headX, int headY) {
+    public boolean fieldNearShip(int xS, int yS, Storage data, int headX, int headY) {
 
         for (int dy = yS - 1; dy <= yS + 1; dy++) {
             for (int dx = xS - 1; dx <= xS + 1; dx++) {
@@ -48,7 +48,7 @@ public class ShipPlaceCheck {
         return false;
     }
 
-    public boolean isAllDestroyed(StorageShips storage) {
+    public boolean isAllDestroyed(Storage storage) {
         if (storage.getDestroyedShips() == 10) return true;
         return false;
     }

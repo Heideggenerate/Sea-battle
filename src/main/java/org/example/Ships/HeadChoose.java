@@ -4,22 +4,22 @@ import org.example.User.FieldGenerator;
 import org.example.User.UserInput;
 import org.example.User.UserOutput;
 
-public class HeadChooseShipAutomatic {
+public class HeadChoose {
 
-    private StorageShips storage = new StorageShips();
+    private Storage storage = new Storage();
     private final UserOutput output = new UserOutput();
     private final UserInput input = new UserInput();
-    private final ShipPlaceCheck checker = new ShipPlaceCheck();
-    private final ShipLengthCounter shipLength = new ShipLengthCounter();
-    private final FullAutomaticlShipBuilder shipBuilder = new FullAutomaticlShipBuilder();
+    private final Checker checker = new Checker();
+    private final LengthCounter shipLength = new LengthCounter();
+    private final BuildAuto shipBuilder = new BuildAuto();
     //TODO: проблема в том, что, при вызове этого объекта, в этом объекте создаётся этот же класс haedcooseshipautomatic
     private final FieldGenerator field = new FieldGenerator();
 
-    public void dataChange(StorageShips storage) {
+    public void dataChange(Storage storage) {
         this.storage = storage;
     }
 
-    public StorageShips headPlacer() {
+    public Storage headPlacer() {
         boolean isPlaced = false;
         field.arrayClear();
         field.tempFieldPrint();

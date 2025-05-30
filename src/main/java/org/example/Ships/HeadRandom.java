@@ -1,17 +1,17 @@
 package org.example.Ships;
 
-public class HeadRandomGenerator {
+public class HeadRandom {
 
-    private StorageShips data = new StorageShips();
-    private ShipLengthCounter shipLength = new ShipLengthCounter();
-    private ShipPlaceCheck checker = new ShipPlaceCheck();
-    private FullAutomaticlShipBuilder shipBuilder = new FullAutomaticlShipBuilder();
+    private Storage data = new Storage();
+    private LengthCounter shipLength = new LengthCounter();
+    private Checker checker = new Checker();
+    private BuildAuto shipBuilder = new BuildAuto();
 
-    public void playerData(StorageShips playerInfo) {
+    public void playerData(Storage playerInfo) {
         data = playerInfo;
     }
 
-    public StorageShips fourShips() {
+    public Storage fourShips() {
         boolean isPlaced = false;
         while (!isPlaced) {
             data.fieldClean(data);

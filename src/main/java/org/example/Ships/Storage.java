@@ -1,6 +1,6 @@
 package org.example.Ships;
 
-public class StorageShips {
+public class Storage {
 
     public final int XSIZE = 9;
     public final int YSIZE = 9;
@@ -15,7 +15,7 @@ public class StorageShips {
         shipsOnTable[y][x] = true;
     }
 
-    public void fieldClean(StorageShips data) {
+    public void fieldClean(Storage data) {
         for (int i = 0; i < YSIZE; i++) {
             for (int j = 0; j < XSIZE; j++) {
                 data.tableGetter()[i][j] = false;
