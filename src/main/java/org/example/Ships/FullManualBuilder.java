@@ -11,6 +11,7 @@ public class FullManualBuilder {
     UserInput input = new UserInput();
     FieldGenerator field = new FieldGenerator();
     ShipPlaceCheck checker = new ShipPlaceCheck();
+    ShipDestroy destroy = new ShipDestroy();
 
     private boolean[] usedShips = new boolean[4];
     private int[] lastCoordinates = new int[2];
@@ -19,17 +20,18 @@ public class FullManualBuilder {
         this.storage = storage;
     }
 
-    public void partGenerate() {
+    public StorageShips partGenerate() {
         tempStorageClear();
         field.arrayClear();
         output.shipsType(0);
         output.shipsType(1);
         field.dataChange(storage);
         for (int i = 0; i < 4; i++) {
-            partPlacer();
-            output.shipsType(0);
+            if (!partPlacer()) i--;
+            if (i != 3) output.shipsType(0);
             for (int j = 0; j < usedShips.length; j++) if (!usedShips[j]) output.shipsType(j + 2);
         }
+        return storage;
     }
 
     public boolean partPlacer() {

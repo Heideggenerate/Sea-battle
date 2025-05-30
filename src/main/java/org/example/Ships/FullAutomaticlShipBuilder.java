@@ -2,7 +2,7 @@ package org.example.Ships;
 
 import java.util.Arrays;
 
-public class FulAutomaticlShipBuilder {
+public class FullAutomaticlShipBuilder {
     private StorageShips data = new StorageShips();
     private ShipPlaceCheck checker = new ShipPlaceCheck();
 

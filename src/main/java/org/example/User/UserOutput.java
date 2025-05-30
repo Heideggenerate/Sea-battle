@@ -6,12 +6,12 @@ public class UserOutput {
     //TODO: переставить варианты местами
     public static void menuTypeGame() {System.out.println("====Выберите тип расположения кораблей====\n1.Частично ручное\n2.Автоматическое\n3.Полностью ручное");}
 
-    public static void shipsCoordinates() {System.out.println("====Введите координаты====");}
+    public static void shipsCoordinates() {System.out.println("\n====Введите координаты====");}
 
     public static void shipXY(int coorType) {
         switch (coorType) {
             case 1: System.out.println("\n\t\tX\n"); break;
-            case 0: System.out.println("\t\tY\n"); break;
+            case 0: System.out.println("\n\t\tY\n"); break;
         }
     }
 
@@ -44,5 +44,28 @@ public class UserOutput {
 
     public static void typeError() {
         System.out.println("\n\n\nНеверный выбор корабля!\n\n\n");
+    }
+
+    public static void enters() {
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    }
+
+    public static void gameOver(int k) {
+        System.out.print("\n\nИгра окончена! Победил игрок №");
+        switch (k) {
+            case 0: System.out.println('1'); break;
+            case 1: System.out.println('2'); break;
+        }
+        System.out.println("\n\n");
+    }
+
+    public static void queue(int k) {
+        enters();
+        System.out.print("Очередь игрока №");
+        switch(k) {
+            case 0: System.out.println('1'); break;
+            case 1: System.out.println('2'); break;
+        }
+        System.out.println("\n\n");
     }
 }

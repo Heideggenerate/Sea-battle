@@ -47,4 +47,9 @@ public class ShipPlaceCheck {
         }
         return false;
     }
+
+    public boolean isAllDestroyed(StorageShips storage) {
+        if (storage.getDestroyedShips() == 10) return true;
+        return false;
+    }
 }

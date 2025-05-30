@@ -11,7 +11,7 @@ public class HeadChooseShipAutomatic {
     private final UserInput input = new UserInput();
     private final ShipPlaceCheck checker = new ShipPlaceCheck();
     private final ShipLengthCounter shipLength = new ShipLengthCounter();
-    private final FulAutomaticlShipBuilder shipBuilder = new FulAutomaticlShipBuilder();
+    private final FullAutomaticlShipBuilder shipBuilder = new FullAutomaticlShipBuilder();
     //TODO: проблема в том, что, при вызове этого объекта, в этом объекте создаётся этот же класс haedcooseshipautomatic
     private final FieldGenerator field = new FieldGenerator();
 
@@ -19,7 +19,7 @@ public class HeadChooseShipAutomatic {
         this.storage = storage;
     }
 
-    public void headPlacer() {
+    public StorageShips headPlacer() {
         boolean isPlaced = false;
         field.arrayClear();
         field.tempFieldPrint();
@@ -31,7 +31,9 @@ public class HeadChooseShipAutomatic {
                     output.shipsCoordinates();
                     coordinates = input.shipsCoordinates();
                     canPlace = (checker.mergedCheck(coordinates[1], coordinates[0], storage, coordinates[1], coordinates[0], true));
-                    if (!canPlace) output.coordinatesError();
+                    if (!canPlace) {
+                        output.coordinatesError();
+                    }
                 }
                 int[][] fakeArr = new int[0][0];
                 storage.shipOnTableGive(coordinates[1], coordinates[0]);
@@ -47,5 +49,6 @@ public class HeadChooseShipAutomatic {
                     output.coordinatesError();
                 }
         }
+        return storage;
     }
 }

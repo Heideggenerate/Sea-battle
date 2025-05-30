@@ -5,6 +5,7 @@ import org.example.Logic.GameLogic;
 import org.example.Ships.*;
 
 import java.util.Arrays;
+import java.util.Timer;
 
 public class FieldGenerator {
 
@@ -17,10 +18,15 @@ public class FieldGenerator {
         data = storage;
     }
     //TODO: сделать вывод универсальнее
-    public void generator(boolean[][][] field) {
+    public void generator(boolean[][][] field, boolean queue) {
 
         boolean[][][] filedData = field;
+        int count = 0;
         for (boolean[][] firstArray : filedData) {
+            if (queue && count == 0) {
+                count++;
+                continue;
+            }
             for (boolean[] secondArray : firstArray) {
                 for (boolean thirdArray : secondArray) {
                     if (thirdArray) {
@@ -33,7 +39,9 @@ public class FieldGenerator {
                 System.out.println();
             }
             System.out.println();
+            if (!queue) break;
         }
+        System.out.println("\n\n\n");
     }
 
     public void arrayClear() {
@@ -41,6 +49,23 @@ public class FieldGenerator {
             Arrays.fill(arr, -1);
         }
     }
+
+    public void attackField(int[][] coordinates, StorageShips storage) {
+        for (int i = 0; i < storage.YSIZE; i++) {
+            for (int j = 0; j < storage.XSIZE; j++) {
+                if (storage.tableGetter()[i][j] == true) {
+                    if (coordinates[i][j] == 2) {
+                        System.out.print('⊞');
+                    }
+                    else System.out.print('□');
+                } else {
+                    if (coordinates[i][j] == 1) System.out.print('⊡');
+                    else if (coordinates[i][j] == 0) System.out.print('□');
+                }
+            }
+            System.out.println();
+        }
+     }
 
     public void tempField (int x, int y, int number, boolean add, int[][] coordinates) {
         tempField[number][0] = y;

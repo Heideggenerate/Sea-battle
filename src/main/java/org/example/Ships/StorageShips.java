@@ -38,4 +38,14 @@ public class StorageShips {
         shipsHeads[num][typeCoor] = value;
     }
 
+    private int destroyedShipsCount = 0;
+
+    public void destroyedShipsIncrement() {
+        destroyedShipsCount += 1;
+    }
+
+    public int getDestroyedShips() {
+        return destroyedShipsCount;
+    }
+
 }

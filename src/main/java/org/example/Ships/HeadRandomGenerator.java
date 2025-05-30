@@ -5,13 +5,13 @@ public class HeadRandomGenerator {
     private StorageShips data = new StorageShips();
     private ShipLengthCounter shipLength = new ShipLengthCounter();
     private ShipPlaceCheck checker = new ShipPlaceCheck();
-    private FulAutomaticlShipBuilder shipBuilder = new FulAutomaticlShipBuilder();
+    private FullAutomaticlShipBuilder shipBuilder = new FullAutomaticlShipBuilder();
 
     public void playerData(StorageShips playerInfo) {
         data = playerInfo;
     }
 
-    public void fourShips() {
+    public StorageShips fourShips() {
         boolean isPlaced = false;
         while (!isPlaced) {
             data.fieldClean(data);
@@ -23,6 +23,7 @@ public class HeadRandomGenerator {
             shipBuilder.dataChange(data);
             isPlaced = shipBuilder.shipSize();
         }
+        return data;
     }
 
     public void coordinatesGenerator(boolean isPlaced, int k) {

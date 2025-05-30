@@ -9,22 +9,22 @@ public class FirstPlayerShips {
     private HeadChooseShipAutomatic parameterPassingManualAuto = new HeadChooseShipAutomatic();
     private FullManualBuilder parameterPassingManual = new FullManualBuilder();
 
+
     /**Передача ссылки первого игрока*/
-    public void passingFirstAuto() {
+    public StorageShips passingFirstAuto() {
         parameterPassingAuto.playerData(playerFirst);
-        parameterPassingAuto.fourShips();
+        return parameterPassingAuto.fourShips();
     }
 
-    public void passingFirstManualAuto() {
+    public StorageShips passingFirstManualAuto() {
         parameterPassingManualAuto.dataChange(playerFirst);
-        parameterPassingManualAuto.headPlacer();
+        return parameterPassingManualAuto.headPlacer();
     }
 
-    public void passingFirstManual() {
+    public StorageShips passingFirstManual() {
         parameterPassingManual.storageChange(playerFirst);
-        parameterPassingManual.partGenerate();
+        return parameterPassingManual.partGenerate();
     }
-
     public StorageShips getPlayerFirst() {
         return playerFirst;
     }

@@ -8,19 +8,19 @@ public class SecondPlayerShips {
     private FullManualBuilder parameterPassingManual = new FullManualBuilder();
 
     /**Передача ссылки второго игрока*/
-    public void passingSecond() {
+    public StorageShips passingSecond() {
         parameterPassing.playerData(playerSecond);
-        parameterPassing.fourShips();
+        return parameterPassing.fourShips();
     }
 
-    public void passingSecondManualAuto() {
-//        parameterPassingManualAuto.dataChange(playerSecond);
-//        parameterPassingManualAuto.headPlacer();
+    public StorageShips passingSecondManualAuto() {
+        parameterPassingManualAuto.dataChange(playerSecond);
+        return parameterPassingManualAuto.headPlacer();
     }
 
-    public void  passingSecondManual() {
-//        parameterPassingManual.partGenerate();
-//        parameterPassingManual.storageChange(playerSecond);
+    public StorageShips passingSecondManual() {
+        parameterPassingManual.storageChange(playerSecond);
+        return parameterPassingManual.partGenerate();
     }
 
     public StorageShips getPlayerSecond() {
