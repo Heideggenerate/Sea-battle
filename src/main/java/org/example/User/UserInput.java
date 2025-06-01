@@ -13,16 +13,6 @@ public class UserInput {
         return coordinates;
     }
 
-    public static void gameType() {
-        Scanner scan = new Scanner(System.in);
-        int k = scan.nextInt();
-        switch (k) {
-            case 1:
-            case 2:
-            case 3:
-        }
-    }
-
     public static int input() {
         Scanner scan = new Scanner(System.in);;
         int k = scan.nextInt();

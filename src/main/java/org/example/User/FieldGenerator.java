@@ -20,6 +20,7 @@ public class FieldGenerator {
         }
     }
 
+
     public void attackField(int[][] coordinates, Storage storage) {
         for (int i = 0; i < storage.YSIZE; i++) {
             for (int j = 0; j < storage.XSIZE; j++) {

@@ -61,47 +61,37 @@ public class BuildAuto {
         if (Math.abs(shift) >= 10) {
             isY = true;
             shift /= 10;
-        }
-        int[][] arr = new int[4][2];
+        }int[][] arr = new int[4][2];
         for (int i = 0; i < arr.length; i++) Arrays.fill(arr[i], -1);
-        int count = 0;
+        int[] count = new int[1];
         if (isY) {
             if (shift < 0) for (int i = headsGet[size][0]; i <= headsGet[size][0] - shift; i++) {
-                if (!checker.mergedCheck(headsGet[size][1], i, storage, headsGet[size][1], headsGet[size][0], false)) return false;
-                else {
-                    arr[count][0] = i;
-                    arr[count][1] = headsGet[size][1];
-                    count++;
-                }
+                if (!coordinateChecker(headsGet[size][1], i, storage, headsGet[size][1], headsGet[size][0], arr, count)) return false;
             }
             else for (int i = headsGet[size][0] - shift; i < headsGet[size][0]; i++) {
-                if (!checker.mergedCheck(headsGet[size][1], i, storage, headsGet[size][1], headsGet[size][0], false)) return false;
-                else {
-                    arr[count][0] = i;
-                    arr[count][1] = headsGet[size][1];
-                    count++;
-                }
+                if (!coordinateChecker(headsGet[size][1], i, storage, headsGet[size][1], headsGet[size][0], arr, count)) return false;
             }
         }
         else {
             if (shift < 0) for (int i = headsGet[size][1] + shift; i < headsGet[size][1]; i++) {
-                if (!checker.mergedCheck(i, headsGet[size][0], storage, headsGet[size][1], headsGet[size][0], false)) return false;
-                else {
-                    arr[count][0] = headsGet[size][0];
-                    arr[count][1] = i;
-                    count++;
-                }
+                if (!coordinateChecker(i, headsGet[size][0], storage, headsGet[size][1], headsGet[size][0], arr, count)) return false;
             }
             else for (int i = headsGet[size][1]; i <= shift + headsGet[size][1]; i++) {
-                if (!checker.mergedCheck(i, headsGet[size][0], storage, headsGet[size][1], headsGet[size][0], false)) return false;
-                else {
-                    arr[count][0] = headsGet[size][0];
-                    arr[count][1] = i;
-                    count++;
-                }
+                if (!coordinateChecker(i, headsGet[size][0], storage, headsGet[size][1], headsGet[size][0], arr, count)) return false;
             }
         }
         coordinatesArray = arr;
+        return true;
+    }
+
+    //TODO: Разгрузить логику coordinateCheck
+    public boolean coordinateChecker(int x, int y, Storage storage, int headX, int headY, int[][] arr, int[] count) {
+        if (!checker.mergedCheck(x, y, storage, headX, headY, false)) return false;
+        else {
+            arr[count[0]][0] = y;
+            arr[count[0]][1] = x;
+            count[0]++;
+        }
         return true;
     }
 
@@ -118,7 +108,7 @@ public class BuildAuto {
 
         if (Math.abs(end) != size) {
             if (end < 0) end += Math.abs(end) - size;
-            else end -= end - size;
+            else end = size;
         }
         if (isY) return end *= 10;
         else return end;

@@ -48,7 +48,6 @@ public class Checker {
     }
 
     /**
-     *
      * @param x Координаты части корабля по Х
      * @param y Координаты части корабля по У
      * @param data Данные игрока

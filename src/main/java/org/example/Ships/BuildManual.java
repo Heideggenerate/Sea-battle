@@ -6,11 +6,11 @@ import java.util.Arrays;
 
 public class BuildManual {
 
-    Storage storage = new Storage();
-    UserOutput output = new UserOutput();
-    UserInput input = new UserInput();
-    FieldGenerator field = new FieldGenerator();
-    Checker checker = new Checker();
+    private Storage storage = new Storage();
+    private UserOutput output = new UserOutput();
+    private UserInput input = new UserInput();
+    private FieldGenerator field = new FieldGenerator();
+    private Checker checker = new Checker();
 
     private boolean[] usedShips = new boolean[4];
     private int[] lastCoordinates = new int[2];
