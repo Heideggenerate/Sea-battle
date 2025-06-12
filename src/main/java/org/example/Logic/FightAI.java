@@ -5,6 +5,7 @@ import org.example.Ships.ShipDestroy;
 import org.example.Ships.Storage;
 import org.example.User.FieldGenerator;
 import org.example.User.UserInput;
+import org.example.User.UserOutput;
 
 import java.util.Arrays;
 
@@ -13,6 +14,7 @@ public class FightAI {
 
     private Storage storage = new Storage();
     private UserInput input = new UserInput();
+    private UserOutput output = new UserOutput();
     private Checker check = new Checker();
     private FieldGenerator field = new FieldGenerator();
     private ShipDestroy destroy = new ShipDestroy();
@@ -61,11 +63,13 @@ public class FightAI {
     public void fight(Storage[] playerInfo) {
         directionsReset();
         fieldsReset();
+        destroy.storageChange(playerInfo[0]);
         while (!check.isAllDestroyed(playerInfo[0]) && !check.isAllDestroyed(playerInfo[1])) {
             fightUser(playerInfo[1]);
             fightAI(playerInfo[0]);
+            output.sleeperEnters(false);
+            field.attackField(fieldAttackAI, playerInfo[0]);
         }
-        field.attackField(fieldAttackAI, playerInfo[0]);
     }
 
     public void fightUser(Storage playerSecond) {
@@ -123,6 +127,7 @@ public class FightAI {
             }
             else  {
                 if (check.outOfFieldCheck(directions[i][1], directions[i][0])) fieldAttackAI[directions[i][0]][directions[i][1]] = 1;
+                break;
             }
         }
         move(vertical, false);
@@ -135,6 +140,7 @@ public class FightAI {
             }
             else {
                 if (check.outOfFieldCheck(directions[i][1], directions[i][0])) fieldAttackAI[directions[i][0]][directions[i][1]] = 1;
+                break;
             }
         }
     }
