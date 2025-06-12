@@ -13,6 +13,7 @@ public class GameTypeAi {
     private final FieldGenerator field = new FieldGenerator();
     private final Storage[] playerData = new Storage[2];
     private final FightAI fight = new FightAI();
+    private final UserOutput output = new UserOutput();
 
 
     public void gameTypeAi() {
@@ -20,11 +21,12 @@ public class GameTypeAi {
         playerData[0] = firstPlayer.passingFirstAuto();
         playersInfo[0] = firstPlayer.getPlayerFirst().tableGetter();
 
-
+        output.sleeperEnters(false);
 
         playerData[1] = secondPlayer.passingSecond();
         playersInfo[1] = secondPlayer.getPlayerSecond().tableGetter();
 
+        output.sleeperEnters(true);
 
         fight.fight(playerData);
     }

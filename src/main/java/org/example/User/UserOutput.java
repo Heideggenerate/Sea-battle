@@ -76,4 +76,8 @@ public class UserOutput {
         enters();
         try {Thread.sleep(2500 - k);} catch (Exception ex) {}
     }
+
+    public static void botOrUser() {
+        System.out.println("1.Игра с ботом\n2.Игра с человеком");
+    }
 }
