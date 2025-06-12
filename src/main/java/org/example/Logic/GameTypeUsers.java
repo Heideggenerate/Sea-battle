@@ -6,7 +6,7 @@ import org.example.User.UserInput;
 import org.example.User.UserOutput;
 
 
-public class GameType {
+public class GameTypeUsers {
 
     private final Storage data = new Storage();
     private final PlayerFirst firstPlayer = new PlayerFirst();
@@ -55,6 +55,7 @@ public class GameType {
                 break;
         }
         fight.fightLogicUse(playerData);
+
     }
 
 }

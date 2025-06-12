@@ -110,7 +110,7 @@ public class Checker {
      */
     //Проверка на то, уничтожены ли все корабли
     public boolean isAllDestroyed(Storage storage) {
-        if (storage.getDestroyedShips() == 10) return true;
+        if (storage.getDestroyedShips() >= 10) return true;
         return false;
     }
 }

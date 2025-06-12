@@ -25,6 +25,7 @@ public class ShipDestroy {
     //Выбор координат атаки
     public int[][] coordinatesAttack(int[][] fieldAttackCoordinates) {
         fieldAttack = fieldAttackCoordinates;
+        System.out.println("\n\n");
         field.attackField(fieldAttack, storage);
         for (int i = 0; i < 5; i++) {
             int[] coordinate = input.shipsCoordinates();

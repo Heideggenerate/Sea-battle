@@ -1,9 +1,11 @@
 package org.example;
-import org.example.Logic.GameType;
+
+import org.example.Logic.GameTypeAi;
+import org.example.Logic.GameTypeUsers;
 
 public class Main {
     public static void main(String[] args) {
-        GameType logic = new GameType();
-        logic.gameType();
+        GameTypeAi logic = new GameTypeAi();
+        logic.gameTypeAi();
     }
 }
